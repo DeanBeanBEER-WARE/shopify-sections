@@ -1,0 +1,28 @@
+development:
+  theme_id: "live"
+  store: your-store.myshopify.com
+  password: shptka_xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  directory: .
+  ignore_files:
+    - config/settings_data.json
+    - .git/*
+    - .github/*
+    - node_modules/*
+    - README.md
+    - package.json
+    - package-lock.json
+
+# Local development server settings
+local:
+  theme_id: "dev"
+  store: localhost
+  password: local
+  directory: .
+  ignore_files:
+    - config/settings_data.json
+    - .git/*
+    - .github/*
+    - node_modules/*
+    - README.md
+    - package.json
+    - package-lock.json

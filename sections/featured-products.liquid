@@ -1,0 +1,159 @@
+<div class="featured-products-section">
+  <div class="featured-products__header">
+    <h2 class="featured-products__title">{{ section.settings.title }}</h2>
+  </div>
+
+  <div class="featured-products__grid {{ section.settings.grid_layout }}">
+    {%- for product in section.settings.collection.products -%}
+      <a href="{{ product.url }}" class="product-card">
+        <div class="product-card__image-wrapper">
+          <img src="{{ product.featured_image }}" class="product-card__image" alt="{{ product.title }}" loading="lazy">
+        </div>
+        
+        <div class="product-card__info">
+          <h3 class="product-card__title">{{ product.title }}</h3>
+          
+          {%- if section.settings.show_vendor and product.vendor -%}
+            <p class="product-card__vendor">{{ product.vendor }}</p>
+          {%- endif -%}
+          
+          {%- if section.settings.show_price -%}
+            <p class="product-card__price">${{ product.price }}</p>
+          {%- endif -%}
+        </div>
+      </a>
+    {%- endfor -%}
+  </div>
+</div>
+
+<style>
+.featured-products-section {
+  padding: 4rem 0;
+  background-color: #ffffff;
+}
+
+.featured-products__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.featured-products__title {
+  font-size: 2.5rem;
+  margin: 0;
+  color: #333;
+}
+
+.featured-products__grid {
+  display: grid;
+  gap: 2rem;
+  padding: 0 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.featured-products__grid.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.featured-products__grid.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.featured-products__grid.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.product-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.product-card__image-wrapper {
+  position: relative;
+  padding-bottom: 100%;
+  overflow: hidden;
+}
+
+.product-card__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-card__image {
+  transform: scale(1.05);
+}
+
+.product-card__info {
+  padding: 1.5rem;
+  background: #ffffff;
+}
+
+.product-card__title {
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+  color: #333;
+}
+
+.product-card__vendor {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0 0 0.5rem;
+}
+
+.product-card__price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #000;
+  margin: 0;
+}
+
+@media screen and (max-width: 1024px) {
+  .featured-products__grid.grid-4 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .featured-products__grid.grid-3,
+  .featured-products__grid.grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .featured-products__title {
+    font-size: 2rem;
+  }
+  
+  .featured-products-section {
+    padding: 3rem 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .featured-products__grid {
+    grid-template-columns: 1fr !important;
+    padding: 0 1rem;
+  }
+  
+  .featured-products__title {
+    font-size: 1.75rem;
+  }
+}
+</style>

@@ -1,0 +1,11 @@
+{
+  "name": "Hero Banner",
+  "settings": {
+    "heading": "Welcome to our store",
+    "description": "Shop our latest collection",
+    "button_text": "Shop Now",
+    "button_link": "#",
+    "text_alignment": "text-center",
+    "background_image": "https://images.unsplash.com/photo-1441986300917-64674bd600d8"
+  }
+}

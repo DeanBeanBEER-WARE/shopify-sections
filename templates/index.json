@@ -1,0 +1,52 @@
+{
+  "name": "Test Template",
+  "wrapper": "div",
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "heading": "Welcome to Our Store",
+        "description": "Discover our amazing products",
+        "button_text": "Shop Now",
+        "button_link": "#",
+        "text_alignment": "text-center"
+      }
+    },
+    "featured_products": {
+      "type": "featured-products",
+      "settings": {
+        "title": "Featured Products",
+        "products_to_show": 8,
+        "grid_layout": "grid-4",
+        "show_price": true,
+        "show_vendor": true
+      }
+    },
+    "newsletter": {
+      "type": "newsletter-signup",
+      "settings": {
+        "title": "Subscribe to our newsletter",
+        "description": "Stay updated with our latest news and special offers",
+        "button_text": "Subscribe",
+        "layout": "centered"
+      }
+    },
+    "promo": {
+      "type": "image-text-overlay",
+      "settings": {
+        "heading": "Special Collection",
+        "text": "<p>Discover our handpicked selection of premium products.</p>",
+        "button_label": "Learn More",
+        "text_position": "center",
+        "section_height": "medium",
+        "overlay_opacity": 50
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "featured_products",
+    "promo",
+    "newsletter"
+  ]
+}

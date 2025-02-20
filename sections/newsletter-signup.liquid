@@ -1,0 +1,152 @@
+<div class="newsletter-section" style="background-color: {{ section.settings.background_color }}; color: {{ section.settings.text_color }};">
+  <div class="newsletter__container">
+    <div class="newsletter__content">
+      <h2 class="newsletter__title">{{ section.settings.title }}</h2>
+      <div class="newsletter__description">{{ section.settings.description }}</div>
+      
+      <form class="newsletter__form {% if section.settings.layout == 'centered' %}form-centered{% endif %}">
+        <div class="newsletter__input-wrapper">
+          <input
+            type="email"
+            class="newsletter__input"
+            placeholder="{{ section.settings.placeholder_text }}"
+            required
+            autocomplete="email"
+          >
+        </div>
+        
+        <button type="submit" class="newsletter__submit" 
+          style="background-color: {{ section.settings.button_color }}; color: {{ section.settings.button_text_color }};">
+          {{ section.settings.button_text }}
+        </button>
+      </form>
+      
+      <div class="newsletter__success">
+        Thanks for subscribing!
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.newsletter-section {
+  padding: 4rem 2rem;
+}
+
+.newsletter__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.newsletter__content {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.newsletter__title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.newsletter__description {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.newsletter__form {
+  display: flex;
+  gap: 1rem;
+}
+
+.form-centered {
+  flex-direction: column;
+  align-items: center;
+}
+
+.newsletter__input-wrapper {
+  flex: 1;
+  max-width: 400px;
+}
+
+.newsletter__input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  font-size: 1rem;
+  line-height: 1.5;
+  transition: border-color 0.3s ease;
+}
+
+.newsletter__input:focus {
+  outline: none;
+  border-color: {{ section.settings.button_color }};
+}
+
+.newsletter__submit {
+  padding: 0.875rem 2rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.form-centered .newsletter__submit {
+  width: 100%;
+  max-width: 400px;
+}
+
+.newsletter__submit:hover {
+  opacity: 0.9;
+}
+
+.newsletter__success {
+  display: none;
+  color: #28a745;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .newsletter__form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .newsletter__input-wrapper {
+    width: 100%;
+    max-width: none;
+  }
+
+  .newsletter__submit {
+    width: 100%;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.querySelector('.newsletter__form');
+  const successMessage = document.querySelector('.newsletter__success');
+
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Simulate form submission
+      form.style.display = 'none';
+      successMessage.style.display = 'block';
+      
+      // Reset form after delay
+      setTimeout(() => {
+        form.reset();
+        form.style.display = form.classList.contains('form-centered') ? 'flex' : 'block';
+        successMessage.style.display = 'none';
+      }, 3000);
+    });
+  }
+});
+</script>
